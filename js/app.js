@@ -1,8 +1,11 @@
 
 var textures;
 var key;
+
+const tele = window.Telegram.WebApp;
 function loaded() {
     room.loader.loading();
+    tele.ready();
 }
 
 room.loader = {
@@ -99,6 +102,8 @@ room.menu = {
             this.stats.clicked = true;
             this.setTexture(this.stats.inside ? this.sprites.clicked 
                     : this.sprites.default);
+            this.tele.MainButton.text = 'Play';
+            this.tele.MainButton.show();
         }.bind(this.button.play));
         
         this.button.play.on('pointerup', function() {
